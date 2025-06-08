@@ -1,0 +1,85 @@
+{
+  "prometheus_url": "http://prometheus-server.monitoring.svc.cluster.local:9090",
+  "refresh_interval": 120,
+  "cache_dir": "/tmp/nfs-visualizer-cache",
+  "app_title": "Kubernetes Cluster NFS Mount Monitor",
+  
+  "metric_name": "kubernetes_pv_nfs_accessible",
+  
+  "metric_mapping": {
+    "server_label": "nfs_server",
+    "client_label": "pod_node",
+    "path_label": "persistent_volume_path",
+    "mount_path_prefix": "/k8s-volumes/"
+  },
+  
+  "cluster_nodes": [
+    "k8s-master-01",
+    "k8s-worker-01",
+    "k8s-worker-02",
+    "k8s-worker-03",
+    "k8s-worker-04",
+    "nfs-provisioner-01",
+    "nfs-provisioner-02"
+  ],
+  
+  "node_types": {
+    "default": {
+      "color": "#607D8B",
+      "title": "Kubernetes Node"
+    },
+    "k8s-master-01": {
+      "color": "#3F51B5",
+      "title": "Master Node"
+    },
+    "k8s-worker-01": {
+      "color": "#4CAF50",
+      "title": "Worker Node"
+    },
+    "k8s-worker-02": {
+      "color": "#4CAF50", 
+      "title": "Worker Node"
+    },
+    "k8s-worker-03": {
+      "color": "#4CAF50",
+      "title": "Worker Node"
+    },
+    "k8s-worker-04": {
+      "color": "#4CAF50",
+      "title": "Worker Node"
+    },
+    "nfs-provisioner-01": {
+      "color": "#FF5722",
+      "title": "NFS Provisioner"
+    },
+    "nfs-provisioner-02": {
+      "color": "#FF7043",
+      "title": "NFS Provisioner"
+    }
+  },
+  
+  "visualization": {
+    "network": {
+      "height": "600px",
+      "width": "100%",
+      "bgcolor": "#f5f5f5",
+      "font_color": "#333333"
+    },
+    "edge_colors": {
+      "accessible": "#2E7D32",
+      "inaccessible": "#C62828"
+    },
+    "node_sizing": {
+      "base_size": 20,
+      "export_multiplier": 2
+    },
+    "physics": {
+      "gravity": -5000,
+      "central_gravity": 0.4,
+      "spring_length": 150
+    },
+    "charts": {
+      "line_chart_height": 300
+    }
+  }
+}

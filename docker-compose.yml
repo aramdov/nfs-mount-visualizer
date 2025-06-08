@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  nfs-mount-visualizer:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./config.yaml:/app/config.yaml
+    environment:
+      - PROMETHEUS_URL=http://prometheus:9090  # This overrides the config file if you use environment variables in the app
+    restart: unless-stopped

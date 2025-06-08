@@ -1,0 +1,75 @@
+{
+  "prometheus_url": "http://localhost:9090",
+  "refresh_interval": 300,
+  "cache_dir": ".cache",
+  "app_title": "NFS Mount Visualization",
+  "metric_name": "nfs_mount_accessible",
+  "cluster_nodes": [
+    "node1",
+    "node2",
+    "node3",
+    "node4",
+    "storage1",
+    "storage2"
+  ],
+  "node_types": {
+    "default": {
+      "color": "#607D8B",
+      "title": "Cluster Node"
+    },
+    "node1": {
+      "color": "#6E9FED",
+      "title": "Head Node"
+    },
+    "node2": {
+      "color": "#4CAF50",
+      "title": "Compute Node"
+    },
+    "node3": {
+      "color": "#4CAF50",
+      "title": "Compute Node"
+    },
+    "node4": {
+      "color": "#FF9800",
+      "title": "GPU Compute Node"
+    },
+    "storage1": {
+      "color": "#9C27B0",
+      "title": "Storage Node"
+    },
+    "storage2": {
+      "color": "#E91E63",
+      "title": "Storage Node"
+    }
+  },
+  "metric_mapping": {
+    "server_label": "source_node",
+    "client_label": "target_node",
+    "path_label": "mount_path",
+    "mount_path_prefix": "/mnt/"
+  },
+  "visualization": {
+    "network": {
+      "height": "700px",
+      "width": "100%",
+      "bgcolor": "#222222",
+      "font_color": "white"
+    },
+    "edge_colors": {
+      "accessible": "#4CAF50",
+      "inaccessible": "#F44336"
+    },
+    "node_sizing": {
+      "base_size": 25,
+      "export_multiplier": 3
+    },
+    "physics": {
+      "gravity": -8000,
+      "central_gravity": 0.3,
+      "spring_length": 200
+    },
+    "charts": {
+      "line_chart_height": 400
+    }
+  }
+}

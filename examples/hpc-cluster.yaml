@@ -1,0 +1,105 @@
+---
+# Example configuration for HPC cluster with Lustre and NFS storage
+# Shows configuration for mixed storage environments
+
+prometheus_url: "http://monitor01.hpc.university.edu:9090"
+refresh_interval: 300
+cache_dir: "/scratch/nfs-monitor-cache"
+app_title: "HPC Cluster Storage Mount Monitor"
+
+metric_name: "hpc_filesystem_mount_health"
+
+# HPC-specific metric mapping
+metric_mapping:
+  server_label: "storage_server"
+  client_label: "client_hostname"
+  path_label: "filesystem_path"
+  mount_path_prefix: "/mnt/shared/"
+
+cluster_nodes:
+  - "login01"
+  - "login02"
+  - "compute001"
+  - "compute002"
+  - "compute003"
+  - "compute004"
+  - "gpu001"
+  - "gpu002"
+  - "storage01"
+  - "storage02"
+  - "lustre-mds01"
+  - "lustre-oss01"
+  - "lustre-oss02"
+
+node_types:
+  default:
+    color: "#607D8B"
+    title: "HPC Node"
+    
+  login01:
+    color: "#1976D2"
+    title: "Login Node"
+  login02:
+    color: "#1976D2"
+    title: "Login Node"
+    
+  compute001:
+    color: "#388E3C"
+    title: "Compute Node (CPU)"
+  compute002:
+    color: "#388E3C"
+    title: "Compute Node (CPU)"
+  compute003:
+    color: "#388E3C"
+    title: "Compute Node (CPU)"
+  compute004:
+    color: "#388E3C"
+    title: "Compute Node (CPU)"
+    
+  gpu001:
+    color: "#F57C00"
+    title: "GPU Compute Node"
+  gpu002:
+    color: "#F57C00"
+    title: "GPU Compute Node"
+    
+  storage01:
+    color: "#7B1FA2"
+    title: "NFS Storage Server"
+  storage02:
+    color: "#7B1FA2"
+    title: "NFS Storage Server"
+    
+  lustre-mds01:
+    color: "#C2185B"
+    title: "Lustre Metadata Server"
+  lustre-oss01:
+    color: "#AD1457"
+    title: "Lustre Object Storage Server"
+  lustre-oss02:
+    color: "#AD1457"
+    title: "Lustre Object Storage Server"
+
+# HPC-optimized visualization
+visualization:
+  network:
+    height: "900px"
+    width: "100%"
+    bgcolor: "#263238"
+    font_color: "#ECEFF1"
+    
+  edge_colors:
+    accessible: "#43A047"
+    inaccessible: "#E53935"
+    
+  node_sizing:
+    base_size: 35
+    export_multiplier: 5
+    
+  physics:
+    gravity: -12000
+    central_gravity: 0.15
+    spring_length: 300
+    
+  charts:
+    line_chart_height: 600

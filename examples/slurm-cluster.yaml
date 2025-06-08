@@ -1,0 +1,87 @@
+---
+# Example configuration for a Slurm cluster with custom NFS metrics
+# This example shows how to adapt the visualizer for clusters using different metric label names
+
+prometheus_url: "http://prometheus.cluster.local:9090"
+refresh_interval: 180
+cache_dir: ".cache"
+app_title: "Slurm Cluster NFS Mount Status"
+
+# Custom metric name for Slurm clusters
+metric_name: "slurm_nfs_mount_status"
+
+# Custom metric label mapping
+metric_mapping:
+  server_label: "nfs_server_hostname"    # Different from default "source_node"
+  client_label: "compute_node"           # Different from default "target_node"
+  path_label: "export_path"              # Different from default "mount_path"
+  mount_path_prefix: "/shared/"          # Different mount prefix
+
+# Slurm cluster nodes
+cluster_nodes:
+  - "head-01"
+  - "compute-01"
+  - "compute-02" 
+  - "compute-03"
+  - "gpu-01"
+  - "gpu-02"
+  - "storage-nfs-01"
+  - "storage-nfs-02"
+
+# Node type configuration for Slurm cluster
+node_types:
+  default:
+    color: "#607D8B"
+    title: "Cluster Node"
+    
+  head-01:
+    color: "#2196F3"
+    title: "Head Node"
+    
+  compute-01:
+    color: "#4CAF50"
+    title: "CPU Compute Node"
+  compute-02:
+    color: "#4CAF50"
+    title: "CPU Compute Node"
+  compute-03:
+    color: "#4CAF50"
+    title: "CPU Compute Node"
+    
+  gpu-01:
+    color: "#FF9800"
+    title: "GPU Compute Node"
+  gpu-02:
+    color: "#FF9800" 
+    title: "GPU Compute Node"
+    
+  storage-nfs-01:
+    color: "#9C27B0"
+    title: "NFS Storage Server"
+  storage-nfs-02:
+    color: "#E91E63"
+    title: "NFS Storage Server"
+
+# Custom visualization for dark theme
+visualization:
+  network:
+    height: "800px"
+    width: "100%"
+    bgcolor: "#1a1a1a"
+    font_color: "#ffffff"
+    
+  edge_colors:
+    accessible: "#00C853"      # Bright green
+    inaccessible: "#D32F2F"    # Bright red
+    
+  node_sizing:
+    base_size: 30
+    export_multiplier: 4
+    
+  physics:
+    gravity: -10000
+    central_gravity: 0.2
+    spring_length: 250
+    
+  charts:
+    line_chart_height: 500
