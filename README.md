@@ -1,7 +1,5 @@
 # NFS Mount Visualizer
 
-![NFS Mount Visualizer](https://via.placeholder.com/800x400?text=NFS+Mount+Visualizer)
-
 An interactive web application for visualizing NFS mount relationships between cluster nodes using Prometheus data. This tool helps system administrators and users understand and troubleshoot NFS mount accessibility issues in a cluster environment.
 
 ## Features
@@ -23,9 +21,7 @@ An interactive web application for visualizing NFS mount relationships between c
 
 ### From PyPI
 
-```bash
-pip install nfs-mount-visualizer
-```
+- We don't have this on PyPI, not sure if there is demand for it...
 
 ### From Source
 
@@ -189,5 +185,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgements
 
-- Originally developed at YerevaNN for cluster monitoring
+- Originally developed at [YerevaNN](https://www.yerevann.com/) for cluster monitoring
 - Built with [Streamlit](https://streamlit.io/) and [PyVis](https://pyvis.readthedocs.io/)
